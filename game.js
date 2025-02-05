@@ -43,6 +43,7 @@ $(".btn").on("touchstart", function (e) {
   animatePress(userChosenColorId);
   var lastIndex = userClickedPattern.length - 1;
   checkAnswer(lastIndex);
+  $(".btn").off("touchstart");
 });
 
 function animatePress(currentColor) {
