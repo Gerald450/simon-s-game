@@ -33,6 +33,18 @@ $(".btn").click(function (e) {
   checkAnswer(lastIndex);
 });
 
+//for mobile
+$(".btn").on("touchstart", function (e) {
+  var userChosenColor = e.target.id;
+  userClickedPattern.push(userChosenColor);
+  clickSound = "sounds/" + userChosenColor + ".mp3";
+  playSound(clickSound);
+  userChosenColorId = "#" + userChosenColor;
+  animatePress(userChosenColorId);
+  var lastIndex = userClickedPattern.length - 1;
+  checkAnswer(lastIndex);
+});
+
 function animatePress(currentColor) {
   $(currentColor).addClass("pressed");
   setTimeout(function () {
