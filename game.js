@@ -45,10 +45,18 @@ $(document).keydown(function () {
   $(document).off("keydown");
 });
 
+//testing for mobile devices
+$(document).ready(function () {
+  $(document).on("touchstart", function () {
+    nextSequence();
+    $(document).off("touchstart");
+  });
+});
+
 function checkAnswer(currentLevel) {
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
     //if sequence has ended
-    $('h1').text('Correct!');
+    $("h1").text("Correct!");
     if (currentLevel === gamePattern.length - 1) {
       setTimeout(function () {
         nextSequence();
@@ -71,6 +79,15 @@ function checkAnswer(currentLevel) {
       userClickedPattern = [];
       nextSequence();
       $(document).off("keydown");
+    });
+
+    //restart game on touch
+    $(document).on("touchstart", function () {
+      level = -1;
+      gamePattern = [];
+      userClickedPattern = [];
+      nextSequence();
+      $(document).off("touchstart");
     });
   }
 }
